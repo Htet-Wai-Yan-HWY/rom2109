@@ -31,6 +31,8 @@ sudo apt install -y chrony
 # Edit the /etc/chrony/chrony.conf file on server, add subnet mask
 sudo echo "allow 192.168.1.0/24" >> /etc/chrony/chrony.conf
 systemctl restart chronyd
+# ~/autostart.sh script ကို startup applications ထဲထည့်ခြင်းဖြင့် auto run မှာဖြစ်တယ်။
+# Client computer မှ ssh ဝင်ရောက်ပြီး "tmux a" ဖြင့် sessions များကို ပြန်လည်ရယူနိုင်ပါသည်။
 ```
 ##### ~/.bashrc for Robot, Client computers
 ```
@@ -55,7 +57,15 @@ chronyc sources
 ssh <name>@robot_ip
 tmux a || tmux
 ```
-
+#### GUI or CLI
+```
+# to disable GUI
+sudo systemctl set-default multi-user && reboot
+# to enable GUI
+sudo systemctl set-default graphical
+# to start GUI manually
+sudo systemctl start gdm3
+```
 ###### To Do ( July 8 2023 )
 controller pkg ထဲက z_test_2_move.launch.py နဲ့ ရှေ့နောက် ဘယ်ညာ တပါတ်စီ ပြည့်မှီအောင် စစ်ဆေးရန် ( စစ်ဆေးပြီး OK )
 
